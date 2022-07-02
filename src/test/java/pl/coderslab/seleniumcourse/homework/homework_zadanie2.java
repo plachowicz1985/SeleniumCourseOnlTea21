@@ -12,7 +12,7 @@ import java.time.Duration;
 
 public class homework_zadanie2 {
     @Test
-    public void shouldFindElementsByClassName() {
+    public void shouldFindElements() {
         WebDriver driver = new SafariDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(16));
         driver.get("https://hotel-testlab.coderslab.pl/en/");

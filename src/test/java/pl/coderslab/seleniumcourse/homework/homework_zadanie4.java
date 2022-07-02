@@ -10,7 +10,7 @@ import java.time.Duration;
 
 public class homework_zadanie4 {
     @Test
-    public void shouldFindElementsByClassName() {
+    public void shouldFindElements() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(16));
