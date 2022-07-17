@@ -1,0 +1,15 @@
+Feature: Text search with DuckDuckGo
+
+Scenario: Successful Search
+Given: Browser with open page at address https://duckduckgo.com/
+When: Entered"Henryk Sienkiewicz" on the search input box
+And: Search button (magnifying glass) cliked
+Then: First 3 search results contains: "Henryk Sienkiewicz"
+
+Zadanie 3
+
+Scenario: starting the first java prework presentation from Automation tester course
+GIVEN: being logged on as an existing user on the page https://lms.coderslab.pl
+WHEN: antering existing user data in e-mail and hasło input boxes
+AND: click zaloguj button
+AND: clik

@@ -13,6 +13,7 @@ public class Zadanie2_By_name {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
         WebDriver driver = new ChromeDriver();
         driver.get("https://hotel-testlab.coderslab.pl/en/");
+
         WebElement hotelLocatioName = driver.findElement(By.name("hotel_location"));
         hotelLocatioName.sendKeys("Warsaw");
         WebElement hotelSearchName = driver.findElement(By.name("search_room_submit"));
