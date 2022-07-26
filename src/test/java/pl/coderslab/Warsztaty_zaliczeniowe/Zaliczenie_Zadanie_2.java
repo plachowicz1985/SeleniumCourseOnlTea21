@@ -1,5 +1,6 @@
 package pl.coderslab.Warsztaty_zaliczeniowe;
 
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,8 +13,8 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class Zaliczenie_Zadanie_2 {
-   String setQuantity = "11";
-   String setSize = "XL";
+   String setQuantity = "5";
+   String setSize = "M";
 
     @Test
 
@@ -39,6 +40,14 @@ public class Zaliczenie_Zadanie_2 {
         WebElement searchBar = driver.findElement(By.name("s"));
         searchBar.sendKeys("Hummingbird Printed Sweater");
         searchBar.submit();
+
+        WebElement regularPrice = driver.findElement(By.cssSelector("span.regular-price"));
+        System.out.println(regularPrice.getText());
+        WebElement currentPrice = driver.findElement(By.cssSelector("span.price"));
+        System.out.println(currentPrice.getText());
+
+
+
         WebElement sweaterImg = driver.findElement(By.xpath("//img[@alt=\"Brown bear printed sweater\"]"));
         sweaterImg.click();
 
@@ -69,7 +78,7 @@ public class Zaliczenie_Zadanie_2 {
         checkoutButton2.click();
 
         //potwierdzi address (możesz go dodać wcześniej ręcznie),
-        WebElement continueButton = driver.findElement(By.xpath("//*[contains(text(),\"Continue\")]"));
+        WebElement continueButton = driver.findElement(By.name("confirm-addresses"));
         continueButton.click();
 
         //wybierze metodę odbioru - PrestaShop "pick up in store",
@@ -88,14 +97,22 @@ public class Zaliczenie_Zadanie_2 {
         conditionsBox.click();
         WebElement orderButton = driver.findElement(By.xpath("//*[contains(text(),\"Order with an obligation to pay\")]"));
         orderButton.click();
+        WebElement orderDetails = driver.findElement(By.id("order-details"));
+        System.out.println(orderDetails.getText());
+
 
         //zrobi screenshot z potwierdzeniem zamówienia i kwotą.
-
         File tmpScreenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         String currentDateTime = LocalDateTime.now().toString().replaceAll(":", "_");
         Files.copy(tmpScreenshot.toPath(), Paths.get("/Users/piotrek/Desktop/screenshots", "Warsztaty_zaliczeniowe_Zadanie_2"+".jpeg"));
 
-        driver.quit();
+        //Wejdź w historię zamówień i detale (najpierw kliknij w użytkownika zalogowanego, później kafelek),
+
+        //sprawdź czy zamówienie znajduje się na liście ze statusem "Awaiting check payment" i kwotą
+        //taką samą jak na zamówieniu dwa kroki wcześniej.
+
+
+       driver.quit();
 
     }
 }
