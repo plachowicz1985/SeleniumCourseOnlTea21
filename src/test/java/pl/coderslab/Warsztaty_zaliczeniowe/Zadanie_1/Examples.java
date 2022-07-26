@@ -1,8 +1,10 @@
-package pl.coderslab.Warsztaty_zaliczeniowe;
+package pl.coderslab.Warsztaty_zaliczeniowe.Zadanie_1;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -29,56 +31,39 @@ public class Examples {
     @FindBy(xpath = "//*[contains(text(),\"Save\")]")
     private WebElement saveButton;
 
+    private WebDriver driver;
 
     public Examples(WebDriver driver) {
     PageFactory.initElements(driver, this);
     }
 
 
-    //public void searchPhrase(String phraseToSearch) {
-    // searchInput.sendKeys(phraseToSearch);
-    // searchInput.submit();
-    //}
-
-    public void setPhoneInput(String phraseToInput) {
-        phoneInput.sendKeys(phraseToInput);
+    public void setPhoneInput(String phoneToInput) {
+        phoneInput.sendKeys(phoneToInput);
     }
 
-    public void setPostcodeInput(String phraseToInput) {
-        postcodeInput.sendKeys(phraseToInput);
+    public void setPostcodeInput(String postcodeToInput) {
+        postcodeInput.sendKeys(postcodeToInput);
     }
 
-    public void setCityInput(String phraseToInput) {
-        cityInput.sendKeys(phraseToInput);
+    public void setCityInput(String cityToInput) {
+        cityInput.sendKeys(cityToInput);
     }
 
-    public void setAddressInput(String phraseToInput) {
-        addressInput.sendKeys(phraseToInput);
+    public void setAddressInput(String addressToInput) {
+        addressInput.sendKeys(addressToInput);
     }
 
-    public void setAliasInput(String phraseToInput) {
-        aliasInput.sendKeys(phraseToInput);
+    public void setAliasInput(String aliasToInput) {
+        aliasInput.sendKeys(aliasToInput);
     }
 
     public void setCountryInput(String phraseToInput) {
         countryInput.sendKeys(phraseToInput);
     }
 
-
     public void clickSaveButton() {
         saveButton.click();
     }
-
-   /* public List<String> yourAddresses() {
-        List<String> result = new ArrayList<>();
-        List<WebElement> resultsAddresses = driver.findElements(By.cssSelector(".address-body"));
-        for (int i = 0; i < resultsAddresses.size(); i++) {
-            String headertext = resultsAddresses.get(i).getText();
-            result.add(headertext);
-        }
-
-
-        return result;
-    }*/
 
 }

@@ -1,4 +1,4 @@
-package pl.coderslab.Warsztaty_zaliczeniowe;
+package pl.coderslab.Warsztaty_zaliczeniowe.Zadanie_1;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;

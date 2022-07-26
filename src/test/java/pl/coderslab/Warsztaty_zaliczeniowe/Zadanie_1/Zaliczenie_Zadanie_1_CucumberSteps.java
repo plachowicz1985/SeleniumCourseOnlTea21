@@ -1,18 +1,16 @@
-package pl.coderslab.Warsztaty_zaliczeniowe;
+package pl.coderslab.Warsztaty_zaliczeniowe.Zadanie_1;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -68,31 +66,31 @@ public class Zaliczenie_Zadanie_1_CucumberSteps {
 
     //wypełni formularz New address - dane powinny być pobierane z tabeli Examples w Gherkinie (alias, address, city, zip/postal code, country, phone),
     @And("^I add alias (.*)$")
-    public void aliasAdd(String phraseToInput) { examples.setAliasInput(phraseToInput);}
+    public void aliasAdd(String aliasToInput) { examples.setAliasInput(aliasToInput);}
 
     @And("^I add address (.*)$")
-    public void addressAdd(String phraseToInput) {
-        examples.setAddressInput(phraseToInput);
+    public void addressAdd(String addressToInput) {
+        examples.setAddressInput(addressToInput);
     }
 
     @And("^I add city (.*)$")
-    public void cityAdd(String phraseToInput) {
-        examples.setCityInput(phraseToInput);
+    public void cityAdd(String cityToInput) {
+        examples.setCityInput(cityToInput);
     }
 
     @And("^I add postalcode (.*)$")
-    public void postalcodeAdd(String phraseToInput) {
-        examples.setPostcodeInput(phraseToInput);
+    public void postalcodeAdd(String postcodeToInput) {
+        examples.setPostcodeInput(postcodeToInput);
     }
 
     @And("^I add phone (.*)$")
-    public void phoneAdd(String phraseToInput) {
-        examples.setPhoneInput(phraseToInput);
+    public void phoneAdd(String phoneToInput) {
+        examples.setPhoneInput(phoneToInput);
     }
 
     @And("^I set country (.*)$")
-    public void countryAdd(String phraseToInput) {
-        examples.setCountryInput(phraseToInput);
+    public void countryAdd(String countryToInput) {
+        examples.setCountryInput(countryToInput);
     }
 
     @And("Click save")
@@ -100,14 +98,42 @@ public class Zaliczenie_Zadanie_1_CucumberSteps {
         examples.clickSaveButton();
     }
 
+    @And("Checked if adress was add")
+    public void checkIfAddressWasAdd(){
+        String notifications = driver.findElement(By.id("notifications")).getText();
+        String expectedNotifications = "Address successfully added!";
+        Assert.assertEquals(expectedNotifications, notifications);
+    }
+
     @Then("Checked the added addresses")
     public void checked_the_added_addresses() {
 
-        //String element = driver.findElement(By.id("notifications")).getText();
-        //String element = driver.findElement(By.xpath("//*[contains(text(),\"Mój adres\")]")).getText();
-        String element = driver.findElement(By.xpath("//*[@class=\"address-body\"]")).getText();
-        System.out.println(element);
+        WebElement updateButton = driver.findElement(By.xpath("//*[@id=\"address-26956\"]/div[2]/a[1]"));
+        updateButton.click();
+
+        String aliasExpected = "Mój adres";
+        String addressExpected = "Marszałkowska";
+        String cityExpected = "Warszawa";
+        String postcodeExpected = "00-017";
+        String phoneExpected = "225513333";
+        String countryExpected = "United Kingdom";
+
+        String alias = driver.findElement(By.name("alias")).getText();
+        Assert.assertEquals(aliasExpected, alias);
+
+        String address = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/form/section/div[6]/div[1]/input")).getText();
+        Assert.assertEquals(addressExpected, address);
+
+        String city = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/form/section/div[8]/div[1]/input")).getText();
+        Assert.assertEquals(cityExpected, city);
+
+        String postcode = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/form/section/div[9]/div[1]/input")).getText();
+        Assert.assertEquals(postcodeExpected, postcode);
+
+        String phone = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/form/section/div[11]/div[1]/input")).getText();
+        Assert.assertEquals(phoneExpected, phone);
+
+        String country = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/form/section/div[10]/div[1]/select")).getText();
+        Assert.assertEquals(countryExpected, country);
     }
-
-
 }

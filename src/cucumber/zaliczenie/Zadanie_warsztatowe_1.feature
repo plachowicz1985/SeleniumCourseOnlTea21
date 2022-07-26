@@ -12,6 +12,7 @@ Feature: Zadanie warsztatowe 1 - Selenium WebDriver + Cucumber
     And I add phone <Phone>
     And I set country <Country>
     And Click save
+    And Checked if adress was add
     Then Checked the added addresses
   Examples:
     |Alias              |Address      |City    |Zip/Postal Code|Phone    |Country       |

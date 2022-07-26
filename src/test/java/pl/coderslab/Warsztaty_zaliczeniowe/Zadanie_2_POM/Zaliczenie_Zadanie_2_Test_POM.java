@@ -45,11 +45,7 @@ public class Zaliczenie_Zadanie_2_Test_POM {
         confirmAddress.confirmClick();
         payment.paymentProceed();
         screenShot.saveScreenshot();
-
-
     }
-
-
 }
 
 
